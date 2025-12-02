@@ -1,0 +1,27 @@
+table shoes "ODBC" "WARP2011W.accdb" "Di":
+    S <- [i], D ~ Di, p ~ pi;
+read table shoes;
+
+table machines "ODBC" "WARP2011W.accdb" "machines":
+    M <- [Machine_Num], o ~ OpCost_per_min;
+read table machines;
+
+table raw_materials "ODBC" "WARP2011W.accdb" "RM_Master":
+    K <- [RM_Num], c ~ Cost, u ~ S_Quantity;
+read table raw_materials;
+
+
+table warehouses "ODBC" "WARP2011W.accdb" "Warehouse_Master":
+    W <- [Warehouse_Num], C ~ Capacity;
+read table warehouses;
+
+table BOM "ODBC" "WARP2011W.accdb" "BOM":
+	[Product_Num, RM_Num], a ~ Quantity;
+read table BOM;
+
+table Assign "ODBC" "WARP2011W.accdb" "Machine_Assign":
+	[Product_Num, Machine_Num], t ~ Avg_Duration;
+read table Assign;
+
+
+

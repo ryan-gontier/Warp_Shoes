@@ -1,0 +1,35 @@
+ reset; 
+ 
+ model project.mod;
+ data project.dat;
+ 
+ option solver gurobi;
+ 
+ option relax_integrality 1;
+ solve;
+ 
+ param x_lp{S};
+ let {s in S} x_lp[s] := x[s];
+ 
+
+ param rounded_obj;
+ let rounded_obj := profit;   
+ display rounded_obj > "project.out";
+ 
+ param x_round{S};
+ let {s in S} x_round[s] := round(x_lp[s]);
+ display x_round > "project.out";
+
+
+ 
+ display Machine_Available.dual > "project.out";
+ display Budget.dual > "project.out";
+ display Warehouse_Cap.dual > "project.out";
+ display Machine_Available.slack > "project.out";
+ display Budget.slack > "project.out";
+ display Warehouse_Cap.slack > "project.out"; 
+ display Quantity.slack > "project.out";
+ display "Reduced Costs" > project.out;
+ display _var.rc > project.out;
+ close project.out;
+ 

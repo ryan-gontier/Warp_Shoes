@@ -1,3 +1,6 @@
+#Ryan_Gontier_gontierr_1010985338
+#Sachin_Rastogi_rastog78_101087061
+
 set S;   # shoe types
 set K;   # raw materials
 set M;   # machines
@@ -40,4 +43,5 @@ subject to Quantity{k in K}:
 #Demand
 subject to Demand{s in S}:
 	x[s] <= D[s];
+
 	
